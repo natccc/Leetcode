@@ -1,16 +1,14 @@
 # Write your MySQL query statement below
-SELECT results FROM(
+(
     SELECT name AS results
     FROM users
     JOIN movierating USING (user_id)
     GROUP By user_id,name
     ORDER BY count(*) DESC,name
     LIMIT 1
-) AS user_result
-
+)
 UNION ALL
-
-SELECT results FROM(
+(
     SELECT title AS results
     FROM movies
     JOIN movierating USING (movie_id)
@@ -18,7 +16,7 @@ SELECT results FROM(
     GROUP BY movie_id,title
     ORDER BY AVG(rating) DESC, title
     LIMIT 1
-) AS movie_result
+)
 
 
 
